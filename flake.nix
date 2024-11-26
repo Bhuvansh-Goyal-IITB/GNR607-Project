@@ -15,6 +15,7 @@
           numpy
           matplotlib
           scipy
+          tkinter
         ]);
       in
       {

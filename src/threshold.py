@@ -39,7 +39,7 @@ def get_threshold_img(
                 ):
                     threshold_image[y, x] = 255
                     continue
-            elif (y + 1) < height and (x + 1) < threshold_image.shape[1]:
+            elif (y + 1) < height and (x + 1) < width:
                 if check(
                     convolution_output[y, x],
                     convolution_output[y + 1, x + 1],
