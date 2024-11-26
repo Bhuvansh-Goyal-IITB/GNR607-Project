@@ -15,37 +15,41 @@ class App(tk.Tk):
     def __init__(self):
         super().__init__()
 
-        self.title = "Edge Detector"
-        self.geometry = "600x400"
+        self.title("Edge Detector")
+        self.geometry("600x400")
+        self.resizable(False, False)
 
         self.file_path = tk.StringVar()
         self.sigma = tk.StringVar()
         self.threshold = tk.StringVar()
 
+        # Layout configuration
+        self.grid_columnconfigure(0, weight=1)
+        self.grid_rowconfigure(0, weight=1)
+
         self.file_input = FileInput(self, self.file_path)
-        self.file_input.pack()
+        self.file_input.grid(row=0, column=0, padx=20, pady=(20, 10), sticky="ew")
 
         self.parameter_input = ParameterInput(self, self.sigma, self.threshold)
-        self.parameter_input.pack()
+        self.parameter_input.grid(row=1, column=0, padx=20, pady=10, sticky="ew")
 
         self.button_frame = ttk.Frame(self)
+        self.button_frame.grid(row=2, column=0, padx=20, pady=(10, 20), sticky="ew")
 
         self.output_button = ttk.Button(
             self.button_frame, text="Show Output", command=self.show_output
         )
-        self.output_button.pack(side="left")
+        self.output_button.pack(side="left", padx=5)
 
         self.save_button = ttk.Button(
             self.button_frame, text="Save", command=self.save_output, state="disabled"
         )
-        self.save_button.pack(side="left")
+        self.save_button.pack(side="left", padx=5)
 
         self.clear_button = ttk.Button(
             self.button_frame, text="Clear Variables", command=self.clear_variables
         )
-        self.clear_button.pack(side="left")
-
-        self.button_frame.pack()
+        self.clear_button.pack(side="left", padx=5)
 
         self.last_output = None
 
@@ -112,14 +116,14 @@ class App(tk.Tk):
                 plt.tight_layout()
                 plt.show()
             except UnidentifiedImageError:
-                messagebox.showerror("Error", "File is not a image")
+                messagebox.showerror("Error", "File is not an image")
 
         elif check_output == 1:
             messagebox.showerror("Error", "File does not exist")
         elif check_output == 2:
-            messagebox.showerror("Error", "Please enter valid value for sigma")
+            messagebox.showerror("Error", "Please enter a valid value for sigma")
         elif check_output == 3:
-            messagebox.showerror("Error", "Please enter valid value for threshold")
+            messagebox.showerror("Error", "Please enter a valid value for threshold")
 
         self.output_button.config(state="normal")
 
@@ -134,17 +138,17 @@ class FileInput(ttk.Frame):
     def __init__(self, master, file_path):
         super().__init__(master)
 
-        self.file_input_label = ttk.Label(self, text="File Input")
-        self.file_input_label.pack()
+        self.file_input_label = ttk.Label(self, text="File Input:")
+        self.file_input_label.pack(side="left", padx=5)
 
         self.file_path = file_path
         self.file_input = ttk.Entry(self, textvariable=self.file_path, width=40)
-        self.file_input.pack(side="left")
+        self.file_input.pack(side="left", padx=5)
 
         self.file_browse_button = ttk.Button(
             self, text="Browse", command=self.select_file
         )
-        self.file_browse_button.pack(side="left")
+        self.file_browse_button.pack(side="left", padx=5)
 
     def select_file(self):
         file_path = filedialog.askopenfilename()
@@ -158,17 +162,17 @@ class ParameterInput(ttk.Frame):
         self.threshold = threshold
         self.sigma = sigma
 
-        self.sigma_input_label = ttk.Label(self, text="Sigma")
-        self.sigma_input_label.pack()
+        self.sigma_input_label = ttk.Label(self, text="Sigma:")
+        self.sigma_input_label.pack(anchor="w", padx=5, pady=(0, 2))
 
         self.sigma_input = ttk.Entry(self, textvariable=self.sigma)
-        self.sigma_input.pack()
+        self.sigma_input.pack(fill="x", padx=5, pady=(0, 10))
 
-        self.threshold_input_label = ttk.Label(self, text="Threshold")
-        self.threshold_input_label.pack()
+        self.threshold_input_label = ttk.Label(self, text="Threshold:")
+        self.threshold_input_label.pack(anchor="w", padx=5, pady=(0, 2))
 
         self.threshold_input = ttk.Entry(self, textvariable=self.threshold)
-        self.threshold_input.pack()
+        self.threshold_input.pack(fill="x", padx=5, pady=(0, 10))
 
 
 app = App()
