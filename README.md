@@ -1,40 +1,45 @@
 # Edge Detector  
 
-A command-line tool for detecting edges in images using the Laplacian of Gaussian (LoG) filter and thresholding techniques. This project was developed as part of the GNR607 course under the guidance of Prof. B. Krishna Mohan.  
+A GUI tool for detecting edges in images using the Laplacian of Gaussian (LoG) filter and thresholding techniques. This project was developed as part of the GNR607 course under the guidance of Prof. B. Krishna Mohan.  
+
+---
 
 ## Requirements  
 
-This script requires Python to run. To install the necessary libraries, execute the following command:  
+For running the script using python install the necessary libraries:  
 
 ```bash  
-pip install matplotlib numpy pillow scipy  
+pip install matplotlib numpy pillow scipy tk 
 ```  
 
 For Nix users, use `nix develop` to set up the development environment.  
 
+If using the Windows binary, no installation is required.  
+
+---
+
 ## Usage  
 
-```bash  
-python main.py [sigma] [threshold] [file_path] [-s SAVE_PATH]  
-```  
+### GUI  
 
-### Arguments  
+The Edge Detector includes an intuitive GUI with the following features:  
 
-- **sigma (float):** Standard deviation for Gaussian blurring.  
-- **threshold (float):** Threshold value for edge detection.  
-- **file_path (str):** Path to the input image.  
+1. **Input Fields:**  
+   - **File Input:** Browse and select the input image.  
+   - **Sigma:** Specify the standard deviation for Gaussian blurring.  
+   - **Threshold:** Set the threshold value for edge detection.  
 
-### Optional Argument  
+2. **Buttons:**  
+   - **Show:** Generates an in-memory edge-detected image and displays it.  
+   - **Save:** Saves the currently displayed edge-detected image to disk.  
+   - **Clear:** Resets all inputs and clears the in-memory image.  
+---
 
-- **-s SAVE_PATH (str):** Path to save the output image.  
+## Windows Binary  
 
-### Example  
+For convenience, a pre-compiled binary is included for Windows users. Simply run the binary file to use the GUI version of the tool.  
 
-```bash  
-python main.py 2 0.1 images/lotus.jpg -s results/lotus_edges.png  
-```  
-
-This command processes the image `images/lotus.jpg`, applies Gaussian blur with a sigma of 2, and detects edges using a threshold of 0.1. The resulting edge-detected image will be saved as `results/lotus_edges.png`.  
+---
 
 ## Results  
 
@@ -42,5 +47,7 @@ Below are examples of edge-detected images produced by the tool.
 
 | Original Image                  | Edge-Detected Result            |  
 |---------------------------------|---------------------------------|  
-| ![Image 1](results/lenna.png)   | ![Image 2](results/joker.png)   |  
-| ![Image 3](results/child.png)   | ![Image 4](results/lotus.png)   |  
+| ![Image 1](images/lenna.png)   | ![Image 5](results/lenna.png)   |  
+| ![Image 2](images/child.png)   | ![Image 6](results/child.png)   |  
+| ![Image 3](images/lotus.jpg)   | ![Image 7](results/lotus.png)   |  
+| ![Image 4](images/joker.png)   | ![Image 8](results/joker.png)   |  
