@@ -4,7 +4,7 @@ import numpy.typing as npt
 
 
 def get_kernel(sigma: float) -> npt.NDArray[np.float64]:
-    kernel_half_width = math.floor(3 * sigma)
+    kernel_half_width = math.ceil(3 * sigma)
 
     meshgrid_coordinates = (
         np.array([i for i in range(0, (2 * kernel_half_width) + 1)]) - kernel_half_width

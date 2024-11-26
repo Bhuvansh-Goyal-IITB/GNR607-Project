@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 
 parser = argparse.ArgumentParser()
 
-parser.add_argument("-s", "--save", help="file path for saving the outptu")
+parser.add_argument("-s", "--save", help="file path for saving the output")
 
 parser.add_argument("sigma", help="sigma for gaussian", type=float)
 parser.add_argument("threshold", help="threshold value", type=float)

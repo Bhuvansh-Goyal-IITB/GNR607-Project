@@ -24,6 +24,7 @@
               pythonEnv
               ruff
               pyright
+              texlab
             ];
           };
         };
