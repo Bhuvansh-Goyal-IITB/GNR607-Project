@@ -39,7 +39,9 @@ This command will process the image `images/lotus.jpg`, apply Gaussian blur with
 
 ## Results
 Here are results tested on the images in the images folder:
-![lotus](./results/lotus.png)
+| ![Image 1](results/lenna.png) | ![Image 2](results/joker.png) |
+|-------------------------------|-------------------------------|
+| ![Image 3](results/child.png) | ![Image 4](results/lotus.png) |
 <!---->
 <!--### Results-->
 <!---->
