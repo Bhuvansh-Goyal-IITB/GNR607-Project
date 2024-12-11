@@ -12,9 +12,6 @@
         pkgs = nixpkgs.legacyPackages.${system};
 
         pythonEnv = pkgs.python312.withPackages (ps: with ps; [
-          numpy
-          matplotlib
-          scipy
           tkinter
         ]);
       in
